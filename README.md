@@ -23,7 +23,7 @@ ZH <- "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_ma
 colorfindr::get_colors(ZH, exclude_col = "black", exclude_rad = 100) %>% 
   colorfindr::plot_colors()
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg" height="50">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/zh.png" height="200">
 
 
 ### Canton of Bern
@@ -34,7 +34,7 @@ BE <- "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg"
 colorfindr::get_colors(BE, min_share = 0.1) %>% 
   colorfindr::plot_colors()
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg" height="50">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/be.png" height="200">
 
 
 ### Canton of Vaud
@@ -45,4 +45,4 @@ VD <- "https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg
 colorfindr::get_colors(VD, top_n = 5) %>%
   colorfindr::plot_colors(sort = "size")
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg" height="50">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/vd.png" height="200">
