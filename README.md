@@ -2,7 +2,7 @@
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 # colorfindr
-This R package allows you to extract colors from various image types, returns customized reports and plots treemaps of image compositions.
+This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`) or a **treemap** with the image color composition can be returned (with the function `plot_colors`).
 
 ## Installation
 For regularly updated version (latest: 0.1.0), install from GitHub:
@@ -11,11 +11,8 @@ install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
 ```
 
-# Examples
-Are you having trouble finding the right color for your plots? `colorfindr` provides a remedy.
-
-## Swiss Cantons
-### Do you recognize them?
+## Examples
+### Swiss Cantons: Do you recognize these flags?
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt.png" width="800">
 
 ### Code
