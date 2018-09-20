@@ -11,10 +11,10 @@ install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
 ```
 
-## Examples
-### Colour composition of the South African flag
+## Colour composition of the South African flag
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/rsa1.png" width="800">
 
+### Code
 ```
 # Load packages
 pacman::p_load(colorfindr, dplyr)
@@ -27,9 +27,10 @@ get_colors(
   plot_colors(sort = "size")
 ```
 
-### Flags of Swiss Cantons
+## Flags of Swiss Cantons
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt1.png" width="800">
 
+### Code
 ```
 # Load packages
 pacman::p_load(colorfindr, dplyr)
