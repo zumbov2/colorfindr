@@ -15,7 +15,7 @@ devtools::install_github("zumbov2/colorfindr")
 Are you having trouble finding the right color for your plots? `colorfindr` provides a remedy.
 
 ## Coat of arms of the Swiss cantons
-### Canton of Zürich
+### Which is the right Zürich blue?
 ```
 ZH <- "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg"
 
@@ -23,10 +23,9 @@ ZH <- "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_ma
 colorfindr::get_colors(ZH, exclude_col = "black", exclude_rad = 100) %>% 
   colorfindr::plot_colors()
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/zh.png" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/zh.png" height="250">
 
-
-### Canton of Bern
+### Bern, how much white is on your flag?
 ```
 BE <- "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg"
 
@@ -34,10 +33,10 @@ BE <- "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg"
 colorfindr::get_colors(BE, min_share = 0.1) %>% 
   colorfindr::plot_colors()
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/be.png" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/be.png" height="250">
 
 
-### Canton of Vaud
+### Vaud: White, green and ... ?
 ```
 VD <- "https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg"
 
@@ -45,4 +44,4 @@ VD <- "https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg
 colorfindr::get_colors(VD, top_n = 5) %>%
   colorfindr::plot_colors(sort = "size")
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg" height="200"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/vd.png" height="200">
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/vd.png" height="250">
