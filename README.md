@@ -14,7 +14,7 @@ devtools::install_github("zumbov2/colorfindr")
 # Examples
 Are you having trouble finding the right color for your plots? `colorfindr` provides a remedy.
 
-## Coat of arms of the Swiss cantons
+## Swiss Cantons
 ### Do you recognize them?
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt.png" width="800">
 
