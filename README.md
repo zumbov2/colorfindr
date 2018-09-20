@@ -12,10 +12,24 @@ devtools::install_github("zumbov2/colorfindr")
 ```
 
 ## Examples
-### Swiss Cantons: Do you recognize these flags?
-<img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt.png" width="800">
+### Colour composition of the South African flag
+<img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/rsa1.png" width="800">
 
-### Code
+```
+# Load packages
+pacman::p_load(colorfindr, dplyr)
+
+# Plot
+get_colors(
+  img = "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg",
+  min_share = 0.05
+) %>%
+  plot_colors(sort = "size")
+```
+
+### Flags of Swiss Cantons
+<img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt1.png" width="800">
+
 ```
 # Load packages
 pacman::p_load(colorfindr, dplyr)
