@@ -15,33 +15,22 @@ devtools::install_github("zumbov2/colorfindr")
 Are you having trouble finding the right color for your plots? `colorfindr` provides a remedy.
 
 ## Coat of arms of the Swiss cantons
-### Which is the right Zürich blue?
-```
-ZH <- "https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg"
+### Do you recognize them?
+<img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/kt.png" width="800">
 
-# Show all colors except black and its neighboring values
-colorfindr::get_colors(ZH, exclude_col = "black", exclude_rad = 100) %>% 
-  colorfindr::plot_colors()
+### Code
 ```
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Wappen_Z%C3%BCrich_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/zh.png" height="250">
+# Load packages
+pacman::p_load(colorfindr, dplyr)
 
-### Bern, how much white is on your flag?
+# Images
+img <- c(
+  "https://upload.wikimedia.org/wikipedia/commons/b/b5/Wappen_Aargau_matt.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/0/0e/Wappen_Glarus_matt.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/d/d1/Wappen_Neuenburg_matt.svg"
+)
+
+# Plot
+for (i in 1:length(img)) get_colors(img[i], top_n = 5) %>% plot_colors(sort = "size")
 ```
-BE <- "https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg"
-
-# Show all colors that make up at least 10% of the image
-colorfindr::get_colors(BE, min_share = 0.1) %>% 
-  colorfindr::plot_colors()
-```
-<img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Wappen_Bern_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/be.png" height="250">
-
-
-### Vaud: White, green and ... ?
-```
-VD <- "https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg"
-
-# Show thee five most frequent colors
-colorfindr::get_colors(VD, top_n = 5) %>%
-  colorfindr::plot_colors(sort = "size")
-```
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Wappen_Waadt_matt.svg" height="250"> <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/vd.png" height="250">
