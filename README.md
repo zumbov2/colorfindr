@@ -11,7 +11,7 @@ install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
 ```
 
-## Colour composition of the South African flag
+## Color composition of the South African flag
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/rsa1.png" width="800">
 
 ### Code
