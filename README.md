@@ -46,13 +46,24 @@ img <- c(
 # Plot
 for (i in 1:length(img)) get_colors(img[i], top_n = 5) %>% plot_colors(sort = "size")
 ```
+
 # 3D Scatterplot Examples
-This part of the package was inspired by the wonderful plots of [alfieish](https://github.com/alfieish). They caused a sensation in the category *dataisbeatiful* on [Reddit](https://www.reddit.com/r/dataisbeautiful/comments/7584no/3d_rgb_scatterplots_of_colours_used_in_famous/) in autumn 2017. The plots are created with [Plotly](https://plot.ly) and are accordingly interactive. 
+This part of the package was inspired by the wonderful plots of [alfieish](https://github.com/alfieish). They caused a sensation in the category *dataisbeatiful* on [Reddit](https://www.reddit.com/r/dataisbeautiful/comments/7584no/3d_rgb_scatterplots_of_colours_used_in_famous/) in autumn 2017. The plots are created with [Plotly](https://plot.ly) and are accordingly interactive.
 
 ## Color composition of Edvard Munch's *The Scream*
-<iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~zumbov/14.embed"></iframe>
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_scream_color_composition.gif" width="500">
+[Original on plot.ly](https://plot.ly/~zumbov/14.embed)
 
+### Code
+```
+# Load packages
+pacman::p_load(colorfindr, dplyr)
 
+# Plot
+get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg") %>% 
+  plot_colors_3d()
+```
 
-
-
+## Other masterpieces
+[Mona Lisa](https://en.wikipedia.org/wiki/Mona_Lisa) -> [Color composition](https://plot.ly/~zumbov/10.embed)
+[Girl with a Pearl Earring](https://en.wikipedia.org/wiki/Girl_with_a_Pearl_Earring) -> [Color composition](https://plot.ly/~zumbov/14.embed)
