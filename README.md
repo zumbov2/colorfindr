@@ -62,8 +62,9 @@ pacman::p_load(colorfindr, dplyr)
 # Plot (5000 randomly selected pixels)
 get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg") %>% 
   plot_colors_3d(sample_size = 5000, marker_size = 2.5)
-  ```
-
+```
+Read more [here](https://plot.ly/r/getting-started/) on how to publish your graphs to Plotly.
+  
 ## Other masterpieces
 [Mona Lisa](https://en.wikipedia.org/wiki/Mona_Lisa) -> [Color composition](https://plot.ly/~zumbov/10.embed)  
 [Girl with a Pearl Earring](https://en.wikipedia.org/wiki/Girl_with_a_Pearl_Earring) -> [Color composition](https://plot.ly/~zumbov/14.embed)
