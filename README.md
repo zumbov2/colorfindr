@@ -67,6 +67,8 @@ Read more [here](https://plot.ly/r/getting-started/) on how to publish your grap
   
 ## Other masterpieces
 Da Vinci's [Mona Lisa](https://en.wikipedia.org/wiki/Mona_Lisa) -> [Color composition](https://plot.ly/~zumbov/10.embed)  
-Vermeer's [Girl with a Pearl Earring](https://en.wikipedia.org/wiki/Girl_with_a_Pearl_Earring) -> [Color composition](https://plot.ly/~zumbov/12)
-Klimt's [The Kiss](https://en.wikipedia.org/wiki/The_Kiss_(Klimt)) -> [Color composition](https://plot.ly/~zumbov/16.embed)
+Vermeer's [Girl with a Pearl Earring](https://en.wikipedia.org/wiki/Girl_with_a_Pearl_Earring) -> [Color composition](https://plot.ly/~zumbov/12)  
+Klimt's [The Kiss](https://en.wikipedia.org/wiki/The_Kiss_(Klimt)) -> [Color composition](https://plot.ly/~zumbov/16.embed)  
 Van Gogh's [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) -> [Color composition](https://plot.ly/~zumbov/18.embed)
+
+**Happy Testing!**
