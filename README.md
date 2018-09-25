@@ -52,7 +52,7 @@ This part of the package was inspired by the wonderful plots of [alfieish](https
 
 ## Color composition of Edvard Munch's *The Scream*
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_scream_color_composition.gif" width="500">
-[Original on Plotly](https://plot.ly/~zumbov/14)
+Visit [plot.ly](https://plot.ly/~zumbov/14) for the original.
 
 ### Code
 ```
