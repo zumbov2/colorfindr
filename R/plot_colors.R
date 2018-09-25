@@ -19,7 +19,7 @@
 #' pic1 <- system.file("extdata", "pic1.png", package = "colorfindr")
 #' col <- get_colors(pic1)
 #'
-#' # Plot treemap of image composition
+#' # Plot image composition
 #' plot_colors(col)
 #'
 plot_colors <- function(data, sort = "color", labels = TRUE) {
@@ -47,3 +47,4 @@ plot_colors <- function(data, sort = "color", labels = TRUE) {
       )
     )
   }
+

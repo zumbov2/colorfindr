@@ -57,7 +57,7 @@ get_colors <- function(img, exclude_col = NULL, exclude_rad = NULL, top_n = NULL
     if (is.null(exclude_rad)) exclude_rad <- 0
     if (length(exclude_rad) == 1 & length(exclude_col) > 1) exclude_rad <- rep(exclude_rad, length(exclude_col))
     exclude_colors <- unique(unlist(purrr::map2(exclude_col, exclude_rad, get_blurred_colors)))
-    ranking <- ranking[!ranking$col_hex %in% exclude_colors,]
+    ranking <- ranking[!ranking[["col_hex"]] %in% exclude_colors,]
 
   }
 
@@ -65,10 +65,10 @@ get_colors <- function(img, exclude_col = NULL, exclude_rad = NULL, top_n = NULL
   if (!is.null(top_n)) ranking <- ranking[c(1:top_n),]
 
   # Reduce colors by share
-  if (!is.null(min_share)) ranking <- ranking[ranking$col_share >= min_share,]
+  if (!is.null(min_share)) ranking <- ranking[ranking[["col_share"]] >= min_share,]
 
   # Prepare output
-  if (!get_stats) output <- ranking$col_hex
+  if (!get_stats) output <- ranking[["col_hex"]]
   if (get_stats) output <- ranking
 
   # Return colors

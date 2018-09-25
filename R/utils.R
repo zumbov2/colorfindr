@@ -51,9 +51,8 @@ pic_to_ranking <- function(file) {
   # Read to hex
   if (stringr::str_detect(tolower(file), "\\.svg")) pic <- suppressWarnings(pixmap::pixmapRGB(rsvg::rsvg(file)))
   if (stringr::str_detect(tolower(file), "\\.png")) pic <- suppressWarnings(pixmap::pixmapRGB(png::readPNG(read_from_path(file))))
-  if (stringr::str_detect(tolower(file), "\\.jpg")) pic <- suppressWarnings(pixmap::pixmapRGB(jpeg::readJPEG(read_from_path(file))))
+  if (stringr::str_detect(tolower(file), "\\.jpg|\\.jpeg")) pic <- suppressWarnings(pixmap::pixmapRGB(jpeg::readJPEG(read_from_path(file))))
   if (stringr::str_detect(tolower(file), "\\.tif")) pic <- suppressWarnings(pixmap::pixmapRGB(tiff::readTIFF(read_from_path(file))))
-  if (stringr::str_detect(tolower(file), "\\.bmp")) pic <- suppressWarnings(pixmap::pixmapRGB(bmp::read.bmp(file)))
   if (stringr::str_detect(tolower(file), "\\.bmp")) pic <- suppressWarnings(pixmap::pixmapRGB(bmp::read.bmp(file)))
 
   val <- grDevices::rgb(pic@red, pic@green, pic@blue)
@@ -103,4 +102,35 @@ get_blurred_colors <- function(color, radius) {
   blurred_colors <- grDevices::rgb(col_grid$red / 255, col_grid$green / 255, col_grid$blue / 255)
   return(as.vector(blurred_colors))
 
+}
+
+#' @importFrom magrittr "%>%"
+#' @importFrom plotly plot_ly add_trace layout
+#'
+#' @noRd
+plot3Drgb <- function(data, marker_size = 2) {
+
+  plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
+    plotly::add_trace(
+      x = data[["red"]],
+      y = data[["green"]],
+      z = data[["blue"]],
+      marker = list(
+        color = data[["hex"]],
+        size = marker_size
+      ),
+      showlegend = F
+      ) %>%
+    plotly::layout(
+      scene = list(
+        xaxis = list(title = "R", range = c(0, 255)),
+        yaxis = list(title = "G", range = c(0, 255)),
+        zaxis = list(title = "B", range = c(0, 255)),
+        camera = list(
+          up = list(x = 0, y = 0, z = 1),
+          center = list(x = 0, y = 0, z = -0.1),
+          eye = list(x = 1.1, y = -1.98, z = 0.55)
+          )
+        )
+      )
 }
