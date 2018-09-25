@@ -5,7 +5,7 @@
 This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`) or a **treemap** with the image color composition can be returned (with the function `plot_colors`).
 
 ## Installation
-For regularly updated version (latest: 0.1.0), install from GitHub:
+For regularly updated version (latest: 0.1.1), install from GitHub:
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
