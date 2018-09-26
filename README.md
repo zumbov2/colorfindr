@@ -47,7 +47,7 @@ img <- c(
 for (i in 1:length(img)) get_colors(img[i], top_n = 5) %>% plot_colors(sort = "size")
 ```
 
-# 3D Scatterplot Examples
+# 3D Scatterplot examples
 This part of the package was inspired by the wonderful plots of [alfieish](https://github.com/alfieish). They caused a sensation on [Reddit](https://www.reddit.com/r/dataisbeautiful/comments/7584no/3d_rgb_scatterplots_of_colours_used_in_famous/) in autumn 2017. The plots are created with [Plotly](https://plot.ly) and are accordingly interactive.
 
 ## Color composition of Edvard Munch's *The Scream*
