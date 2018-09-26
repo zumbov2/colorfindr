@@ -52,7 +52,7 @@ This part of the package was inspired by the wonderful plots of [alfieish](https
 
 ## Color composition of Edvard Munch's *The Scream*
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_scream_color_composition.gif" width="500">  
-The original can be found under: https://plot.ly/~zumbov/14.embed
+The original can be found [here](https://plot.ly/~zumbov/14.embed).
 
 ### Code
 ```
@@ -61,6 +61,20 @@ pacman::p_load(colorfindr, dplyr)
 
 # Plot (5000 randomly selected pixels)
 get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg") %>% 
+  plot_colors_3d(sample_size = 5000, marker_size = 2.5)
+```
+
+## Color composition of Salvador Dalí's *The Persistence of Memory*
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_persistence_of_memory_color_composition.gif" width="500">  
+The original can be found [here](https://plot.ly/~zumbov/20.embed).
+
+### Code
+```
+# Load packages
+pacman::p_load(colorfindr, dplyr)
+
+# Plot (5000 randomly selected pixels)
+get_colors("http://wisetoast.com/wp-content/uploads/2015/10/The-Persistence-of-Memory-salvador-deli-painting.jpg") %>%
   plot_colors_3d(sample_size = 5000, marker_size = 2.5)
 ```
 Read more [here](https://plot.ly/r/getting-started/) on how to publish your graphs to Plotly.
