@@ -27,7 +27,7 @@
 #' # Plot image composition
 #' plot_colors_3d(col)
 #'
-plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2, color_space = "sRGB") {
+plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_space = "sRGB") {
 
   # Recover all pixels
   all <- unlist(purrr::map2(data[["col_hex"]], data[["col_freq"]], rep))
@@ -43,9 +43,21 @@ plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2, color_spac
     tibble::as.tibble(t(grDevices::col2rgb(all[["hex"]])))
   )
 
-  # Plot variants
-  if (color_space == "sRGB") plot3Drgb(all, marker_size = marker_size)
-  if (color_space == "HSV") plot3Dhsv(all, marker_size = marker_size)
-  if (color_space == "HSL") plot3Dhsl(all, marker_size = marker_size)
+  # Check for correct color space
+  if (!color_space %in% c("sRGB", "HSV", "HSL")) stop("color_space must be sRGB, HSV or HSL.")
 
+  # Plot variants
+  if (color_space == "sRGB") {
+    plot <- plot3Drgb(all, marker_size = marker_size)
+  }
+
+  if (color_space == "HSV") {
+    plot <- plot3Dhsv(all, marker_size = marker_size)
+  }
+
+  if (color_space == "HSL") {
+    plot <- plot3Dhsl(all, marker_size = marker_size)
+  }
+
+  plot
   }

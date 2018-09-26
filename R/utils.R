@@ -135,24 +135,17 @@ get_blurred_colors <- function(color, radius) {
 #' @importFrom plotly plot_ly add_trace layout
 #'
 #' @noRd
-plot3Drgb <- function(data, marker_size = 2) {
+plot3Drgb <- function(dt, marker_size = 2) {
 
   plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
     plotly::add_trace(
-      x = data[["red"]],
-      y = data[["green"]],
-      z = data[["blue"]],
-      text = paste0(
-        paste0("R: ", data[["red"]],"\n"),
-        paste0("G: ", data[["green"]],"\n"),
-        paste0("B: ", data[["blue"]])
-      ),
-      hoverinfo = "text",
+      x = dt[["red"]],
+      y = dt[["green"]],
+      z = dt[["blue"]],
       marker = list(
-        color = data[["hex"]],
+        color = dt[["hex"]],
         size = marker_size
       ),
-
       showlegend = F
       ) %>%
     plotly::layout(
@@ -173,34 +166,28 @@ plot3Drgb <- function(data, marker_size = 2) {
 #' @importFrom plotly plot_ly add_trace layout
 #'
 #' @noRd
-plot3Dhsv <- function(data, marker_size = 2) {
+plot3Dhsv <- function(dt, marker_size = 2) {
 
   # RGB to HSV
-  data <- dplyr::bind_cols(
-    data,
+  dt <- dplyr::bind_cols(
+    dt,
     tibble::as.tibble(
-      t(grDevices::rgb2hsv(data[["red"]], data[["green"]], data[["blue"]]))
+      t(grDevices::rgb2hsv(dt[["red"]], dt[["green"]], dt[["blue"]]))
     )
   )
 
   # H to radians
-  data[["h"]] <- 2 * pi * data[["h"]]
+  dt[["h"]] <- 2 * pi * dt[["h"]]
 
 
   # Plot
   plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
     plotly::add_trace(
-      x = data[["s"]] * cos(data[["h"]]),
-      y = data[["s"]] * sin(data[["h"]]),
-      z = data[["v"]],
-      text = paste0(
-        paste0("H: ", round(360*data[["h"]]/(2*pi), 4),"\n"),
-        paste0("S: ", round(data[["s"]], 4),"\n"),
-        paste0("V: ", round(data[["v"]], 4))
-      ),
-      hoverinfo = "text",
+      x = dt[["s"]] * cos(dt[["h"]]),
+      y = dt[["s"]] * sin(dt[["h"]]),
+      z = dt[["v"]],
       marker = list(
-        color = data[["hex"]],
+        color = dt[["hex"]],
         size = marker_size
       ),
       showlegend = F
@@ -224,33 +211,27 @@ plot3Dhsv <- function(data, marker_size = 2) {
 #' @importFrom plotly plot_ly add_trace layout
 #'
 #' @noRd
-plot3Dhsl <- function(data, marker_size = 2) {
+plot3Dhsl <- function(dt, marker_size = 2) {
 
   # Col to HSL
-  data <- dplyr::bind_cols(
-    data,
+  dt <- dplyr::bind_cols(
+    dt,
     tibble::as.tibble(
-      t(plotwidgets::col2hsl(data[["hex"]]))
+      t(plotwidgets::col2hsl(dt[["hex"]]))
     )
   )
 
   # H to radians
-  data[["H"]] <- 2 * pi * (data[["H"]]/360)
+  dt[["H"]] <- 2 * pi * (dt[["H"]]/360)
 
   # Plot
   plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
     plotly::add_trace(
-      x = data[["S"]] * cos(data[["H"]]),
-      y = data[["S"]] * sin(data[["H"]]),
-      z = data[["L"]],
-      text = paste0(
-        paste0("H: ", round(360*data[["H"]]/(2*pi), 4),"\n"),
-        paste0("S: ", round(data[["S"]], 4),"\n"),
-        paste0("L: ", round(data[["L"]], 4))
-      ),
-      hoverinfo = "text",
+      x = dt[["S"]] * cos(dt[["H"]]),
+      y = dt[["S"]] * sin(dt[["H"]]),
+      z = dt[["L"]],
       marker = list(
-        color = data[["hex"]],
+        color = dt[["hex"]],
         size = marker_size
       ),
       showlegend = F

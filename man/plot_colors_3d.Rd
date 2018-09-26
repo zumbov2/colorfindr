@@ -4,7 +4,7 @@
 \alias{plot_colors_3d}
 \title{Create interactive 3D scatterplots of image color compositions}
 \usage{
-plot_colors_3d(data, sample_size = 5000, marker_size = 2,
+plot_colors_3d(data, sample_size = 5000, marker_size = 2.5,
   color_space = "sRGB")
 }
 \arguments{
