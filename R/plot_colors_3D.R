@@ -7,12 +7,15 @@
 #' @importFrom purrr map2
 #' @importFrom tibble tibble as.tibble
 #' @importFrom dplyr bind_cols
-#' @importFrom grDevices col2rgb
+#' @importFrom grDevices col2rgb rgb2hsv
 #'
 #' @param data a \code{data.frame} from a \code{get_colors} call consisting of the columns \code{col_hex}, \code{col_freq},
 #'    \code{col_share}.
 #' @param sample_size the number of pixels to randomly select.
 #' @param marker_size size of marker.
+#' @param color_space specifies color space. By default, the colors are displayed in the \code{"sRGB"} color space (x-axis: red,
+#'    y-axis: blue, z-axis: green). Alternatively, the color spaces \code{"HSL"} (hue, saturation, lightness) and \code{"HSV"}
+#'    (hue, saturation, value) can be used.
 #'
 #' @export
 #'
@@ -24,8 +27,7 @@
 #' # Plot image composition
 #' plot_colors_3d(col)
 #'
-plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2) {
-
+plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2, color_space = "sRGB") {
 
   # Recover all pixels
   all <- unlist(purrr::map2(data[["col_hex"]], data[["col_freq"]], rep))
@@ -35,13 +37,15 @@ plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2) {
     hex = all[sample(c(1:length(all)), sample_size)]
   )
 
-  # Back to RGB
+  # Convert Back to RGB
   all <- dplyr::bind_cols(
     all,
     tibble::as.tibble(t(grDevices::col2rgb(all[["hex"]])))
-    )
+  )
 
-  # Plot sample
-  plot3Drgb(all, marker_size = marker_size)
+  # Plot variants
+  if (color_space == "sRGB") plot3Drgb(all, marker_size = marker_size)
+  if (color_space == "HSV") plot3Dhsv(all, marker_size = marker_size)
+  if (color_space == "HSL") plot3Dhsl(all, marker_size = marker_size)
 
   }

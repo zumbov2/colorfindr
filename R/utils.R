@@ -35,6 +35,33 @@ read_from_path <- function(file) {
   return(pic)
 }
 
+#' @noRd
+alpha_deleter <- function(arr) {
+
+  if (dim(arr)[3] == 4) {
+
+    # Helper matrix
+    hm <- matrix(
+      ncol = ncol(arr),
+      nrow = nrow(arr),
+      byrow = F,
+      arr[,,4] > 0
+    )
+
+    # Subset array
+    arr2 <- array(arr[hm], dim = c(1, length(arr[,,1][hm]), 4))
+
+    return(arr2)
+
+  } else {
+
+    return(arr)
+
+  }
+
+  }
+
+
 #' @importFrom stringr str_detect
 #' @importFrom rsvg rsvg
 #' @importFrom png readPNG
@@ -49,11 +76,11 @@ read_from_path <- function(file) {
 pic_to_ranking <- function(file) {
 
   # Read to hex
-  if (stringr::str_detect(tolower(file), "\\.svg")) pic <- suppressWarnings(pixmap::pixmapRGB(rsvg::rsvg(file)))
-  if (stringr::str_detect(tolower(file), "\\.png")) pic <- suppressWarnings(pixmap::pixmapRGB(png::readPNG(read_from_path(file))))
-  if (stringr::str_detect(tolower(file), "\\.jpg|\\.jpeg")) pic <- suppressWarnings(pixmap::pixmapRGB(jpeg::readJPEG(read_from_path(file))))
-  if (stringr::str_detect(tolower(file), "\\.tif")) pic <- suppressWarnings(pixmap::pixmapRGB(tiff::readTIFF(read_from_path(file))))
-  if (stringr::str_detect(tolower(file), "\\.bmp")) pic <- suppressWarnings(pixmap::pixmapRGB(bmp::read.bmp(file)))
+  if (stringr::str_detect(tolower(file), "\\.svg")) pic <- suppressWarnings(pixmap::pixmapRGB(alpha_deleter(rsvg::rsvg(file))))
+  if (stringr::str_detect(tolower(file), "\\.png")) pic <- suppressWarnings(pixmap::pixmapRGB(alpha_deleter(png::readPNG(read_from_path(file)))))
+  if (stringr::str_detect(tolower(file), "\\.jpg|\\.jpeg")) pic <- suppressWarnings(pixmap::pixmapRGB(alpha_deleter(jpeg::readJPEG(read_from_path(file)))))
+  if (stringr::str_detect(tolower(file), "\\.tif")) pic <- suppressWarnings(pixmap::pixmapRGB(alpha_deleter(tiff::readTIFF(read_from_path(file)))))
+  if (stringr::str_detect(tolower(file), "\\.bmp")) pic <- suppressWarnings(pixmap::pixmapRGB(alpha_deleter(bmp::read.bmp(file))))
 
   val <- grDevices::rgb(pic@red, pic@green, pic@blue)
 
@@ -115,10 +142,17 @@ plot3Drgb <- function(data, marker_size = 2) {
       x = data[["red"]],
       y = data[["green"]],
       z = data[["blue"]],
+      text = paste0(
+        paste0("R: ", data[["red"]],"\n"),
+        paste0("G: ", data[["green"]],"\n"),
+        paste0("B: ", data[["blue"]])
+      ),
+      hoverinfo = "text",
       marker = list(
         color = data[["hex"]],
         size = marker_size
       ),
+
       showlegend = F
       ) %>%
     plotly::layout(
@@ -133,4 +167,104 @@ plot3Drgb <- function(data, marker_size = 2) {
           )
         )
       )
+}
+
+#' @importFrom magrittr "%>%"
+#' @importFrom plotly plot_ly add_trace layout
+#'
+#' @noRd
+plot3Dhsv <- function(data, marker_size = 2) {
+
+  # RGB to HSV
+  data <- dplyr::bind_cols(
+    data,
+    tibble::as.tibble(
+      t(grDevices::rgb2hsv(data[["red"]], data[["green"]], data[["blue"]]))
+    )
+  )
+
+  # H to radians
+  data[["h"]] <- 2 * pi * data[["h"]]
+
+
+  # Plot
+  plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
+    plotly::add_trace(
+      x = data[["s"]] * cos(data[["h"]]),
+      y = data[["s"]] * sin(data[["h"]]),
+      z = data[["v"]],
+      text = paste0(
+        paste0("H: ", round(360*data[["h"]]/(2*pi), 4),"\n"),
+        paste0("S: ", round(data[["s"]], 4),"\n"),
+        paste0("V: ", round(data[["v"]], 4))
+      ),
+      hoverinfo = "text",
+      marker = list(
+        color = data[["hex"]],
+        size = marker_size
+      ),
+      showlegend = F
+    ) %>%
+    plotly::layout(
+      scene = list(
+        xaxis = list(title = "S * cos(H)", range = c(-1, 1)),
+        yaxis = list(title = "S * sin(H)", range = c(-1, 1)),
+        zaxis = list(title = "V", range = c(0, 1)),
+        camera = list(
+          up = list(x = 0, y = 0, z = 1),
+          center = list(x = 0, y = 0, z = -0.1),
+          eye = list(x = 1.1, y = -1.98, z = 0.55)
+        )
+      )
+    )
+}
+
+#' @importFrom plotwidgets rgb2hsl
+#' @importFrom magrittr "%>%"
+#' @importFrom plotly plot_ly add_trace layout
+#'
+#' @noRd
+plot3Dhsl <- function(data, marker_size = 2) {
+
+  # Col to HSL
+  data <- dplyr::bind_cols(
+    data,
+    tibble::as.tibble(
+      t(plotwidgets::col2hsl(data[["hex"]]))
+    )
+  )
+
+  # H to radians
+  data[["H"]] <- 2 * pi * (data[["H"]]/360)
+
+  # Plot
+  plotly::plot_ly(type = "scatter3d", mode = "markers") %>%
+    plotly::add_trace(
+      x = data[["S"]] * cos(data[["H"]]),
+      y = data[["S"]] * sin(data[["H"]]),
+      z = data[["L"]],
+      text = paste0(
+        paste0("H: ", round(360*data[["H"]]/(2*pi), 4),"\n"),
+        paste0("S: ", round(data[["S"]], 4),"\n"),
+        paste0("L: ", round(data[["L"]], 4))
+      ),
+      hoverinfo = "text",
+      marker = list(
+        color = data[["hex"]],
+        size = marker_size
+      ),
+      showlegend = F
+    ) %>%
+    plotly::layout(
+      scene = list(
+        xaxis = list(title = "S * cos(H)", range = c(-1, 1)),
+        yaxis = list(title = "S * sin(H)", range = c(-1, 1)),
+        zaxis = list(title = "L", range = c(0, 1)),
+        camera = list(
+          up = list(x = 0, y = 0, z = 1),
+          center = list(x = 0, y = 0, z = -0.1),
+          eye = list(x = 1.1, y = -1.98, z = 0.55)
+        )
+      )
+    )
 }

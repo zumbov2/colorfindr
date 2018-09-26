@@ -1,0 +1,18 @@
+colorfindr 0.1.2 (GitHub only)
+------------------------------
+
+* Exclusion of transparent pixels (alpha value == 0)
+* Added argument color_space to plot_colors_3d
+
+
+colorfindr 0.1.1 (GitHub only)
+------------------------------
+
+* Added 3D scatterplot function
+* Improved documentation
+
+
+colorfindr 0.1.0 (GitHub only)
+------------------------------
+
+* First version of the package.

@@ -48,7 +48,7 @@ get_colors <- function(img, exclude_col = NULL, exclude_rad = NULL, top_n = NULL
   # Check format
   check_format(img)
 
-  # Check format
+  # Get color ranking
   ranking <- pic_to_ranking(img)
 
   # Exclude colors
