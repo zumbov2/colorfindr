@@ -21,7 +21,7 @@ pacman::p_load(colorfindr, dplyr)
 
 # Plot
 get_colors(
-  img = "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa_new.svg",
+  img = "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg",
   min_share = 0.05
 ) %>%
   plot_colors(sort = "size")
