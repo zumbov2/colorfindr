@@ -52,7 +52,7 @@ This part of the package was inspired by the wonderful plots of [alfieish](https
 
 ## Color composition of Edvard Munch's *The Scream*
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_scream_color_composition.gif" width="500">  
-The original can be found [here](https://plot.ly/~zumbov/14.embed).
+The original can be found under: https://plot.ly/~zumbov/14.embed.
 
 ### Code
 ```
@@ -66,7 +66,7 @@ get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg")
 
 ## Color composition of Salvador Dalí's *The Persistence of Memory*
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/the_persistence_of_memory_color_composition.gif" width="500">  
-The original can be found [here](https://plot.ly/~zumbov/20.embed).
+The original can be found under: https://plot.ly/~zumbov/20.embed.
 
 ### Code
 ```
