@@ -88,14 +88,15 @@ Van Gogh's [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) ->
 ## Different color spaces
 From version 0.1.2 on it is possible to display the point clouds in different color spaces: Besides ...
 
-[RGB](https://en.wikipedia.org/wiki/RGB_color_space)
+[RGB](https://en.wikipedia.org/wiki/RGB_color_space)  
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/rgb.gif" width="300">  
 
-[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and ...
+[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and ...  
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsv.gif" width="300">  
 
-[HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) are available.  
+[HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) ...  
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsl.gif" width="300">  
+are available.
 
 ### Code
 ```
