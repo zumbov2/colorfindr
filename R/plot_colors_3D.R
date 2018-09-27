@@ -13,7 +13,7 @@
 #'    \code{col_share}.
 #' @param sample_size the number of pixels to randomly select.
 #' @param marker_size size of marker.
-#' @param color_space specifies color space. By default, the colors are displayed in the \code{"sRGB"} color space (x-axis: red,
+#' @param color_space specifies color space. By default, the colors are displayed in the \code{"RGB"} color space (x-axis: red,
 #'    y-axis: blue, z-axis: green). Alternatively, the color spaces \code{"HSL"} (hue, saturation, lightness) and \code{"HSV"}
 #'    (hue, saturation, value) can be used.
 #'
@@ -27,7 +27,7 @@
 #' # Plot image composition
 #' plot_colors_3d(col)
 #'
-plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_space = "sRGB") {
+plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_space = "RGB") {
 
   # Recover all pixels
   all <- unlist(purrr::map2(data[["col_hex"]], data[["col_freq"]], rep))
@@ -44,10 +44,10 @@ plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_sp
   )
 
   # Check for correct color space
-  if (!color_space %in% c("sRGB", "HSV", "HSL")) stop("color_space must be sRGB, HSV or HSL.")
+  if (!color_space %in% c("RGB", "HSV", "HSL")) stop("color_space must be 'RGB', 'HSV' or 'HSL'.")
 
   # Plot variants
-  if (color_space == "sRGB") {
+  if (color_space == "RGB") {
     plot <- plot3Drgb(all, marker_size = marker_size)
   }
 
