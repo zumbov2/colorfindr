@@ -86,9 +86,12 @@ Klimt's [The Kiss](https://en.wikipedia.org/wiki/The_Kiss_(Klimt)) -> [Color com
 Van Gogh's [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) -> [Color composition](https://plot.ly/~zumbov/18.embed)
 
 ## Different color spaces
-From version 0.1.2 on it is possible to display the point clouds in different color spaces. Besides RGB, 
+From version 0.1.2 on it is possible to display the point clouds in different color spaces: Besides ...
 
-[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and  
+[RGB](https://en.wikipedia.org/wiki/RGB_color_space)
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/rgb.gif" width="300">  
+
+[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and ...
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsv.gif" width="300">  
 
 [HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) are available.  
@@ -103,6 +106,7 @@ pacman::p_load(dplyr, colorfindr)
 col <- get_colors("http://joco.name/wp-content/uploads/2014/03/rgb_256_1.png")
 
 # Plot to alternative color spaces
+plot_colors_3d(color_space = "RGB")
 plot_colors_3d(color_space = "HSV")
 plot_colors_3d(color_space = "HSL")
 ```
