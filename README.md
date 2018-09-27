@@ -61,7 +61,7 @@ pacman::p_load(colorfindr, dplyr)
 
 # Plot (5000 randomly selected pixels)
 get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg") %>% 
-  plot_colors_3d(sample_size = 5000, marker_size = 2.5)
+  plot_colors_3d(sample_size = 5000, marker_size = 2.5, color_space = "RGB")
 ```
 
 ## Color composition of Salvador Dalí's *The Persistence of Memory*
@@ -75,7 +75,7 @@ pacman::p_load(colorfindr, dplyr)
 
 # Plot (5000 randomly selected pixels)
 get_colors("http://wisetoast.com/wp-content/uploads/2015/10/The-Persistence-of-Memory-salvador-deli-painting.jpg") %>%
-  plot_colors_3d(sample_size = 5000, marker_size = 2.5)
+  plot_colors_3d(sample_size = 5000, marker_size = 2.5, color_space = "RGB")
 ```
 Read more [here](https://plot.ly/r/getting-started/) on how to publish your graphs to Plotly.
   
@@ -86,7 +86,25 @@ Klimt's [The Kiss](https://en.wikipedia.org/wiki/The_Kiss_(Klimt)) -> [Color com
 Van Gogh's [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) -> [Color composition](https://plot.ly/~zumbov/18.embed)
 
 ## Different color spaces
+From version 0.1.2 on it is possible to display the point clouds in different color spaces. Besides RGB, 
 
+[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and  
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsv.gif" width="300">  
 
+[HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) are available.  
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsl.gif" width="300">  
+
+### Code
+```
+# Load packages
+pacman::p_load(dplyr, colorfindr)
+
+# Get colors
+col <- get_colors("http://joco.name/wp-content/uploads/2014/03/rgb_256_1.png")
+
+# Plot to alternative color spaces
+plot_colors_3d(color_space = "HSV")
+plot_colors_3d(color_space = "HSL")
+```
 
 **Happy Testing!**
