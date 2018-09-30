@@ -1,11 +1,17 @@
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/colorfindr)](https://cran.r-project.org/package=colorfindr)
 [![Build Status](https://travis-ci.org/zumbov2/colorfindr.svg?branch=master)](https://travis-ci.org/zumbov2/colorfindr)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![cranlogs](https://cranlogs.r-pkg.org/badges/grand-total/colorfindr)](http://cran.rstudio.com/web/packages/colorfindr/index.html)
 
 # `colorfindr`
 This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned.
 
 ## Installation
-For regularly updated version (latest: 0.1.2), install from GitHub:
+Version 0.1.0 is on CRAN and can be installed as follows:
+```
+install.packages("colorfindr")
+```
+Install from GitHub for a regularly updated version (latest: 0.1.2):
 ```
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
