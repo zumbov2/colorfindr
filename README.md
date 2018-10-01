@@ -113,9 +113,9 @@ pacman::p_load(dplyr, colorfindr)
 col <- get_colors("http://joco.name/wp-content/uploads/2014/03/rgb_256_1.png")
 
 # Plot to alternative color spaces
-plot_colors_3d(color_space = "RGB")
-plot_colors_3d(color_space = "HSV")
-plot_colors_3d(color_space = "HSL")
+plot_colors_3d(col, color_space = "RGB")
+plot_colors_3d(col, color_space = "HSV")
+plot_colors_3d(col, color_space = "HSL")
 ```
 
 **Happy Testing!**
