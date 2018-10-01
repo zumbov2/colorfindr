@@ -8,11 +8,11 @@ This R package allows you to **extract colors** from various image types (curren
 
 ## Installation
 Version 0.1.0 is on CRAN and can be installed as follows:
-```
+```r
 install.packages("colorfindr")
 ```
 Install from GitHub for a regularly updated version (latest: 0.1.2):
-```
+```r
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
 ```
@@ -21,7 +21,7 @@ devtools::install_github("zumbov2/colorfindr")
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/rsa1.png" width="800">
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -37,7 +37,7 @@ get_colors(
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/k1_new.png" width="800">
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -61,7 +61,7 @@ This part of the package was inspired by the wonderful plots of [alfieish](https
 The original can be found under: https://plot.ly/~zumbov/14.embed.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -75,7 +75,7 @@ get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg")
 The original can be found under: https://plot.ly/~zumbov/20.embed.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -105,7 +105,7 @@ From version 0.1.2 on it is possible to display the point clouds in different co
 are available.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(dplyr, colorfindr)
 
