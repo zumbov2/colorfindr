@@ -21,7 +21,7 @@
 #'
 #' @examples
 #' # Extract all colors
-#' pic1 <- system.file("extdata", "pic1.png", package = "colorfindr")
+#' pic1 <- system.file("extdata", "pic5.png", package = "colorfindr")
 #' col <- get_colors(pic1)
 #'
 #' # Plot image composition
@@ -32,12 +32,20 @@ plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_sp
   # Recover all pixels
   all <- unlist(purrr::map2(data[["col_hex"]], data[["col_freq"]], rep))
 
+  # Check if enough pixels for sample draw
+  if (length(all) < sample_size) {
+
+    sample_size <- length(all)
+    message("sample_size exceeds number of pixels: all pixels are plotted.")
+
+  }
+
   # Draw sample
   all <- tibble::tibble(
     hex = all[sample(c(1:length(all)), sample_size)]
   )
 
-  # Convert Back to RGB
+  # Convert back to RGB
   all <- dplyr::bind_cols(
     all,
     tibble::as.tibble(t(grDevices::col2rgb(all[["hex"]])))

@@ -2,7 +2,7 @@ Package: colorfindr
 Type: Package
 Title: Extract Colors from Windows BMP, JPEG, PNG, TIFF, and SVG Format
         Images
-Version: 0.1.2
+Version: 0.1.3
 Authors@R: person("David", "Zumbach", role = c("aut", "cre"), email = "david.zumbach@gfzb.ch")
 Description: Extracts colors from various image types, returns customized reports and plots treemaps 
     and 3D scatterplots of image compositions. Selected colors and color ranges can be excluded from 
@@ -15,6 +15,6 @@ RoxygenNote: 6.1.0
 Imports: purrr, stringr, pixmap, tibble, treemap, rsvg, png, jpeg,
         tiff, bmp, dplyr, plotly, magrittr, plotwidgets
 NeedsCompilation: no
-Packaged: 2018-09-27 15:32:50 UTC; David Zumbach
+Packaged: 2018-10-07 20:02:23 UTC; David Zumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>

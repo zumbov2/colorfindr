@@ -47,4 +47,3 @@ plot_colors <- function(data, sort = "color", labels = TRUE) {
       )
     )
   }
-

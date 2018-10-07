@@ -3,7 +3,7 @@
 #' @noRd
 check_format <- function(file) {
 
-  if (!stringr::str_detect(tolower(file), "\\.jpg|\\.png|\\.bmp|\\.tif|\\.svg"))
+  if (!stringr::str_detect(tolower(file), "\\.jpg|\\.jpeg|\\.png|\\.bmp|\\.tif|\\.svg"))
     stop("file does not appear to be a BMP, JPEG, PNG, TIFF, or SVG")
 
 }
@@ -60,7 +60,6 @@ alpha_deleter <- function(arr) {
   }
 
   }
-
 
 #' @importFrom stringr str_detect
 #' @importFrom rsvg rsvg

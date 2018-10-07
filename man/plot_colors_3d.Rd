@@ -26,7 +26,7 @@ y-axis: blue, z-axis: green). Alternatively, the color spaces \code{"HSL"} (hue,
 }
 \examples{
 # Extract all colors
-pic1 <- system.file("extdata", "pic1.png", package = "colorfindr")
+pic1 <- system.file("extdata", "pic5.png", package = "colorfindr")
 col <- get_colors(pic1)
 
 # Plot image composition
