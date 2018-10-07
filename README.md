@@ -1,12 +1,18 @@
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/colorfindr)](https://cran.r-project.org/package=colorfindr)
 [![Build Status](https://travis-ci.org/zumbov2/colorfindr.svg?branch=master)](https://travis-ci.org/zumbov2/colorfindr)
 [![Licence](https://img.shields.io/badge/licence-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.en.html)
+[![cranlogs](https://cranlogs.r-pkg.org/badges/grand-total/colorfindr)](http://cran.rstudio.com/web/packages/colorfindr/index.html)
 
 # `colorfindr`
 This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned.
 
 ## Installation
-For regularly updated version (latest: 0.1.2), install from GitHub:
+Version 0.1.0 is on CRAN and can be installed as follows:
+```r
+install.packages("colorfindr")
 ```
+Install from GitHub for a regularly updated version (latest: 0.1.2):
+```r
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
 ```
@@ -15,7 +21,7 @@ devtools::install_github("zumbov2/colorfindr")
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/rsa1.png" width="800">
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -31,7 +37,7 @@ get_colors(
 <img src="https://raw.githubusercontent.com/zumbov2/colorfindr/master/img/k1_new.png" width="800">
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -55,7 +61,7 @@ This part of the package was inspired by the wonderful plots of [alfieish](https
 The original can be found under: https://plot.ly/~zumbov/14.embed.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -69,7 +75,7 @@ get_colors("https://upload.wikimedia.org/wikipedia/commons/f/f4/The_Scream.jpg")
 The original can be found under: https://plot.ly/~zumbov/20.embed.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(colorfindr, dplyr)
 
@@ -86,16 +92,20 @@ Klimt's [The Kiss](https://en.wikipedia.org/wiki/The_Kiss_(Klimt)) -> [Color com
 Van Gogh's [The Starry Night](https://en.wikipedia.org/wiki/The_Starry_Night) -> [Color composition](https://plot.ly/~zumbov/18.embed)
 
 ## Different color spaces
-From version 0.1.2 on it is possible to display the point clouds in different color spaces. Besides RGB, 
+From version 0.1.2 on it is possible to display the point clouds in different color spaces: Besides ...
 
-[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and  
+[RGB](https://en.wikipedia.org/wiki/RGB_color_space)  
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/rgb.gif" width="300">  
+
+[HSV](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, value) and ...  
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsv.gif" width="300">  
 
-[HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) are available.  
+[HSL](https://en.wikipedia.org/wiki/HSL_and_HSV) (hue, saturation, lightness) ...  
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/hsl.gif" width="300">  
+are available.
 
 ### Code
-```
+```r
 # Load packages
 pacman::p_load(dplyr, colorfindr)
 
@@ -103,8 +113,9 @@ pacman::p_load(dplyr, colorfindr)
 col <- get_colors("http://joco.name/wp-content/uploads/2014/03/rgb_256_1.png")
 
 # Plot to alternative color spaces
-plot_colors_3d(color_space = "HSV")
-plot_colors_3d(color_space = "HSL")
+plot_colors_3d(col, color_space = "RGB")
+plot_colors_3d(col, color_space = "HSV")
+plot_colors_3d(col, color_space = "HSL")
 ```
 
 **Happy Testing!**
