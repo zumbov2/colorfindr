@@ -11,7 +11,7 @@ Version 0.1.0 is on CRAN and can be installed as follows:
 ```r
 install.packages("colorfindr")
 ```
-Install from GitHub for a regularly updated version (latest: 0.1.2):
+Install from GitHub for a regularly updated version (latest: 0.1.3):
 ```r
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
