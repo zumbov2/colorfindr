@@ -121,7 +121,7 @@ plot_colors_3d(col, color_space = "HSL")
 # Creating color palettes
 Version 0.1.4 provides various methods for creating color palettes with a distinct number of colors. The default method performs a [k-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering on the pixels in the RGB color space (`clust_method = "kmeans"`). Alternatively, the pixel clusters can be created with a version of the [median cut](https://en.wikipedia.org/wiki/Median_cut) algorithm (`clust_method = "median_cut"`). The user can also choose whether the most common RGB combination per cluster is extracted (default: `extract_method = "hex_freq"`) or whether new RGB combinations are created for each cluster, either based on the mean (`extract_method = "mean"`), median (`extract_method = "median"`) or mode (`extract_method = "mode"`) of the RGB dimensions. The default has the advantage that the extracted colors actually appear in the image used. For images with many color nuances, however, the other extraction methods seem to achieve more convincing results. 
 
-## Childhood memories Pt. 1
+## Childhood memories I
 <img src="https://www.movieart.ch/bilder_xl/tintin-et-milou-poster-11438_0_xl.jpg" width="300">
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/ts.png" width="300">  
 
@@ -138,7 +138,7 @@ get_colors("https://www.movieart.ch/bilder_xl/tintin-et-milou-poster-11438_0_xl.
 make_palette(n = 5)
 ```
 
-## Childhood memories Pt. 2
+## Childhood memories II
 <img src="http://www.coverbrowser.com/image/lucky-luke/5-1.jpg" width="300">
 <img src="https://github.com/zumbov2/colorfindr/blob/master/img/ll.png" width="300">  
 
@@ -152,6 +152,40 @@ set.seed(123)
 
 # Get colors and create a palette with n = 5 
 get_colors("http://www.coverbrowser.com/image/lucky-luke/5-1.jpg") %>% 
+    make_palette(n = 5)
+```
+
+## Vintage ads from Switzerland I
+<img src="http://www.gallery29.ie/images/posters/1171469398_DSC03889.jpg" width="300">
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/la.png" width="300">  
+
+### Code
+```r
+# Load packages
+pacman::p_load(dplyr, colorfindr)
+
+# Ensure reproducibility
+set.seed(123)
+
+# Get colors and create a palette with n = 5 
+get_colors("http://www.gallery29.ie/images/posters/1171469398_DSC03889.jpg") %>% 
+    make_palette(n = 5)
+```
+
+## Vintage ads from Switzerland II
+<img src="https://www.artifiche.com/cms/upload/posters_extralarge/2850.jpg" width="300">
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/fl.png" width="300">  
+
+### Code
+```r
+# Load packages
+pacman::p_load(dplyr, colorfindr)
+
+# Ensure reproducibility
+set.seed(123)
+
+# Get colors and create a palette with n = 5 
+get_colors("https://www.artifiche.com/cms/upload/posters_extralarge/2850.jpg") %>% 
     make_palette(n = 5)
 ```
 
