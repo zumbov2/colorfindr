@@ -8,7 +8,6 @@ check_format <- function(file) {
 
 }
 
-#'
 #' @noRd
 read_from_path <- function(file) {
 
@@ -89,7 +88,7 @@ pic_to_ranking <- function(file) {
     col_freq = as.vector(sort(table(val), decreasing = TRUE))
   )
 
-  result$col_share = result$col_freq / sum(result$col_freq)
+  result$col_share <- result$col_freq / sum(result$col_freq)
 
   return(result)
 
@@ -247,4 +246,158 @@ plot3Dhsl <- function(dt, marker_size = 2) {
         )
       )
     )
+}
+
+#' @importFrom tibble tibble
+#'
+#' @noRd
+ranges_per_cluster <- function(cluster, dt, clust.var) {
+
+  dt2 <- dt[dt[clust.var] == cluster,c("red", "green", "blue")]
+  r_range = g_range = b_range = NULL
+
+  tibble::tibble(
+    r_range = max(dt2["red"]) - min(dt2["red"]),
+    g_range = max(dt2["green"]) - min(dt2["green"]),
+    b_range = max(dt2["blue"]) - min(dt2["blue"]),
+    max_range = max(r_range, g_range, b_range),
+    volume = r_range * g_range * b_range
+  )
+
+  }
+
+#' @importFrom purrr map_dfr
+#' @importFrom tibble as.tibble
+#'
+#' @noRd
+median_cut <- function(data, n) {
+
+  data <- tibble::as.tibble(data)
+  data["cluster"] <- 1
+
+  while (max(data["cluster"]) < n) {
+
+    # Ranges per cluster
+    ranges <- purrr::map_dfr(sort(unique(data[["cluster"]])), ranges_per_cluster, dt = data, clust.var = "cluster")
+
+    # Choose cluster
+    clust <- which.max(ranges[["max_range"]])
+
+    # Choose color
+    col <- which.max(ranges[clust,c("r_range", "g_range", "b_range")])
+
+    # Median of color with maximum range
+    col_median <- stats::median(data[[col]][data[["cluster"]] == clust])
+
+    # Split clusters by col_median
+    data[["cluster"]][data[["cluster"]] == clust & data[[col]] < col_median] <- max(data$cluster) + 1
+
+  }
+
+  return(data[["cluster"]])
+
+}
+
+#' @noRd
+mode <- function(vec) {
+
+  unique(vec)[order(table(vec), decreasing = T)][1]
+
+}
+
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr group_by mutate arrange slice pull n desc
+#'
+#' @noRd
+most_frequent_hex_per_cluster <- function(hex, cluster) {
+
+  # Hex colors and clusters
+  freq <- tibble::tibble(
+    hex = hex,
+    cluster = cluster
+    )
+
+  # Most frequent color per cluster
+  output <- freq %>%
+    dplyr::group_by(cluster, hex) %>%
+    dplyr::mutate(freq = dplyr::n()) %>%
+    dplyr::group_by(cluster) %>%
+    dplyr::arrange(dplyr::desc(freq)) %>%
+    dplyr::slice(1) %>%
+    dplyr::arrange(dplyr::desc(freq)) %>%
+    dplyr::pull(hex)
+
+  # Return output
+  return(output)
+
+}
+
+#' @importFrom tibble as.tibble
+#' @importFrom magrittr "%>%"
+#' @importFrom dplyr group_by summarise arrange desc n
+#' @importFrom grDevices rgb
+#' @importFrom stats median
+#'
+#' @noRd
+rgb_per_cluster <- function(rgb, cluster, method) {
+
+  rgb <- tibble::as.tibble(rgb)
+  rgb["cluster"] <- cluster
+  red = green = blue = NULL
+
+  if (method == "mean") {
+
+    output <- rgb %>%
+      dplyr::group_by(cluster) %>%
+      dplyr::summarise(
+        r = mean(red),
+        g = mean(green),
+        b = mean(blue),
+        n = dplyr::n()
+      ) %>%
+      dplyr::arrange(dplyr::desc(n))
+
+  }
+  if (method == "median") {
+
+    output <- rgb %>%
+      dplyr::group_by(cluster) %>%
+      dplyr::summarise(
+        r = stats::median(red),
+        g = stats::median(green),
+        b = stats::median(blue),
+        n = dplyr::n()
+      ) %>%
+      dplyr::arrange(dplyr::desc(n))
+
+  }
+  if (method == "mode") {
+
+    output <- rgb %>%
+      dplyr::group_by(cluster) %>%
+      dplyr::summarise(
+        r = mode(red),
+        g = mode(green),
+        b = mode(blue),
+        n = dplyr::n()
+      ) %>%
+      dplyr::arrange(dplyr::desc(n))
+
+  }
+
+  output <- grDevices::rgb(output[["r"]], output[["g"]], output[["b"]], maxColorValue = 255)
+
+  # Return output
+  return(output)
+
+}
+
+#' @importFrom graphics image
+#'
+#' @noRd
+show_palette <- function(output) {
+
+  graphics::image(1:length(output), 1, as.matrix(1:length(output)), col = output,
+        xlab = "", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+
 }

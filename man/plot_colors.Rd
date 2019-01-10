@@ -13,7 +13,7 @@ plot_colors(data, sort = "color", labels = TRUE)
 \item{sort}{specifies the sorting of the treemap rectangles. By default (\code{"color"}), the rectangles are sorted by
 hex color codes, starting in the upper left corner. With (\code{"size"}) the largest rectangle is placed top left.}
 
-\item{labels}{By default, rectangles that are sufficiently large are provided with a label. If \code{FALSE}, then no labels are
+\item{labels}{by default, rectangles that are sufficiently large are provided with a label. If \code{FALSE}, then no labels are
 displayed.}
 }
 \description{

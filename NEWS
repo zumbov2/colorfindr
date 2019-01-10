@@ -1,3 +1,10 @@
+colorfindr 0.1.4
+----------------
+
+* New function for creating color palettes (make_palette)
+* Minor bug fixes
+
+
 colorfindr 0.1.3
 ----------------
 
