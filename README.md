@@ -4,7 +4,7 @@
 [![cranlogs](https://cranlogs.r-pkg.org/badges/grand-total/colorfindr)](http://cran.rstudio.com/web/packages/colorfindr/index.html)
 
 # `colorfindr`
-This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned. Version 0.1.4 provides various methods for creating color palettes.
+This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned. Version 0.1.4 provides several methods for creating color palettes.
 
 ## Installation
 Version 0.1.3 is on CRAN and can be installed as follows:
@@ -123,7 +123,7 @@ Version 0.1.4 provides various methods for creating color palettes with a distin
 
 ## Palette of my childhood heroes
 <img src="https://www.movieart.ch/bilder_xl/tintin-et-milou-poster-11438_0_xl.jpg" width="300">
-<img src="https://github.com/zumbov2/colorfindr/blob/master/img/ts1.gif" width="300">  
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/ts1.png" width="300">  
 
 ### Code
 ```r
