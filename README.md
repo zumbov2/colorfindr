@@ -4,14 +4,14 @@
 [![cranlogs](https://cranlogs.r-pkg.org/badges/grand-total/colorfindr)](http://cran.rstudio.com/web/packages/colorfindr/index.html)
 
 # `colorfindr`
-This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned.
+This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned. Version 0.1.4 provides various methods for creating color palettes.
 
 ## Installation
 Version 0.1.3 is on CRAN and can be installed as follows:
 ```r
 install.packages("colorfindr")
 ```
-Install from GitHub for a regularly updated version (latest: 0.1.3):
+Install from GitHub for a regularly updated version (latest: 0.1.4):
 ```r
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
@@ -116,6 +116,23 @@ col <- get_colors("http://joco.name/wp-content/uploads/2014/03/rgb_256_1.png")
 plot_colors_3d(col, color_space = "RGB")
 plot_colors_3d(col, color_space = "HSV")
 plot_colors_3d(col, color_space = "HSL")
+```
+
+# Creating color palettes
+Version 0.1.4 provides various methods for creating color palettes with a distinct number of colors. The default method performs a [k-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering on the pixels in the RGB color space (`clust_method = "kmeans"`). Alternatively, the pixel clusters can be created with a version of the [median cut](https://en.wikipedia.org/wiki/Median_cut) algorithm (`clust_method = "median_cut"`). The user can also choose whether the most common RGB combination per cluster is extracted (default: `extract_method = "hex_freq"`) or whether new RGB combinations are created for each cluster, either based on the mean (`extract_method = "mean"`), median (`extract_method = "median"`) or mode (`extract_method = "mode"`) of the RGB dimensions. The default has the advantage that the extracted colors actually appear in the image used. For images with many color nuances, however, the other extraction methods seem to achieve more convincing results. 
+
+## Palette of my childhood heroes
+<img src="https://www.movieart.ch/bilder_xl/tintin-et-milou-poster-11438_0_xl.jpg" width="300">
+<img src="https://github.com/zumbov2/colorfindr/blob/master/img/ts1.gif" width="300">  
+
+### Code
+```r
+# Load packages
+pacman::p_load(dplyr, colorfindr)
+
+# Get colors and create a palette with n = 5 
+get_colors("https://www.movieart.ch/bilder_xl/tintin-et-milou-poster-11438_0_xl.jpg") %>% 
+make_palette(n = 5)
 ```
 
 **Happy Testing!**
