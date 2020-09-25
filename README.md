@@ -7,7 +7,7 @@
 This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned. Version 0.1.4 provides several methods for creating discrete **color palettes**.
 
 ## Installation
-Version 0.1.3 is on CRAN and can be installed as follows:
+Version 0.1.4 is on CRAN and can be installed as follows:
 ```r
 install.packages("colorfindr")
 ```
