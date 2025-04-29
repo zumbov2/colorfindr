@@ -7,11 +7,11 @@
 This R package allows you to **extract colors** from various image types (currently JPEG, PNG, TIFF, SVG, BMP). Either a tailored **report** (directly with the main function `get_colors`), a **treemap** (`plot_colors`) or a **3D scatterplot** (`plot_colors_3d`) with the image color composition can be returned. Version 0.1.4 provides several methods for creating discrete **color palettes**.
 
 ## Installation
-Version 0.1.4 is on CRAN and can be installed as follows:
+Version 0.1.5 is on CRAN and can be installed as follows:
 ```r
 install.packages("colorfindr")
 ```
-Install from GitHub for a regularly updated version (latest: 0.1.4):
+Install from GitHub for a regularly updated version (latest: 0.1.5):
 ```r
 install.packages("devtools")
 devtools::install_github("zumbov2/colorfindr")
@@ -152,40 +152,6 @@ set.seed(123)
 
 # Get colors and create a palette with n = 5 
 get_colors("http://www.coverbrowser.com/image/lucky-luke/5-1.jpg") %>% 
-    make_palette(n = 5)
-```
-
-## Vintage ads from Switzerland I
-<img src="http://www.gallery29.ie/images/posters/1171469398_DSC03889.jpg" width="300">
-<img src="https://github.com/zumbov2/colorfindr/blob/master/img/la.png" width="300">  
-
-### Code
-```r
-# Load packages
-pacman::p_load(dplyr, colorfindr)
-
-# Ensure reproducibility
-set.seed(123)
-
-# Get colors and create a palette with n = 5 
-get_colors("http://www.gallery29.ie/images/posters/1171469398_DSC03889.jpg") %>% 
-    make_palette(n = 5)
-```
-
-## Vintage ads from Switzerland II
-<img src="https://www.artifiche.com/cms/upload/posters_extralarge/2850.jpg" width="300">
-<img src="https://github.com/zumbov2/colorfindr/blob/master/img/fl.png" width="300">  
-
-### Code
-```r
-# Load packages
-pacman::p_load(dplyr, colorfindr)
-
-# Ensure reproducibility
-set.seed(123)
-
-# Get colors and create a palette with n = 5 
-get_colors("https://www.artifiche.com/cms/upload/posters_extralarge/2850.jpg") %>% 
     make_palette(n = 5)
 ```
 

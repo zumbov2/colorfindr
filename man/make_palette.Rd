@@ -4,8 +4,13 @@
 \alias{make_palette}
 \title{Create a color palette from an image.}
 \usage{
-make_palette(data, n = 10, clust_method = "kmeans",
-  extract_method = "hex_freq", show = TRUE)
+make_palette(
+  data,
+  n = 10,
+  clust_method = "kmeans",
+  extract_method = "hex_freq",
+  show = TRUE
+)
 }
 \arguments{
 \item{data}{a \code{data.frame} from a \code{get_colors} call consisting of the columns \code{col_hex}, \code{col_freq},

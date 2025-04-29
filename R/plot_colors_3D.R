@@ -1,6 +1,6 @@
 #' Create interactive 3D scatterplots of image color compositions
 #'
-#' \code{plot_colors_3d} calls \code{\link{plotly}} and creates an interactive 3D scatterplot of
+#' \code{plot_colors_3d} calls \code{\link[plotly]{plot_ly}} and creates an interactive 3D scatterplot of
 #'    colors extracted from Windows BMP, JPEG, PNG, TIFF, and SVG format images with the
 #'    \code{get_colors} function in the RGB color space.
 #'

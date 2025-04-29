@@ -4,8 +4,14 @@
 \alias{get_colors}
 \title{Extract colors from images.}
 \usage{
-get_colors(img, exclude_col = NULL, exclude_rad = NULL, top_n = NULL,
-  min_share = NULL, get_stats = TRUE)
+get_colors(
+  img,
+  exclude_col = NULL,
+  exclude_rad = NULL,
+  top_n = NULL,
+  min_share = NULL,
+  get_stats = TRUE
+)
 }
 \arguments{
 \item{img}{path or url to image.}
