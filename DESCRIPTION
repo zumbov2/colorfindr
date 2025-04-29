@@ -8,12 +8,11 @@ Description: Extracts colors from various image types, returns customized report
     and 3D scatterplots of image compositions. Color palettes can also be created. 
 License: GPL (>= 2)
 Encoding: UTF-8
-LazyData: false
 BugReports: https://github.com/zumbov2/colorfindr/issues
 RoxygenNote: 7.3.2
 Imports: purrr, stringr, pixmap, tibble, treemap, rsvg, png, jpeg,
         tiff, bmp, dplyr, plotly, magrittr, plotwidgets
 NeedsCompilation: no
-Packaged: 2019-01-10 20:48:03 UTC; david
+Packaged: 2025-04-29 07:37:44 UTC; DavidZumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>
