@@ -1,3 +1,9 @@
+colorfindr 0.1.6
+----------------
+
+* MIT license
+* as_tibble replaces as.tibble
+
 colorfindr 0.1.5
 ----------------
 

@@ -169,7 +169,7 @@ plot3Dhsv <- function(dt, marker_size = 2) {
   # RGB to HSV
   dt <- dplyr::bind_cols(
     dt,
-    tibble::as.tibble(
+    tibble::as_tibble(
       t(grDevices::rgb2hsv(dt[["red"]], dt[["green"]], dt[["blue"]]))
     )
   )
@@ -214,7 +214,7 @@ plot3Dhsl <- function(dt, marker_size = 2) {
   # Col to HSL
   dt <- dplyr::bind_cols(
     dt,
-    tibble::as.tibble(
+    tibble::as_tibble(
       t(plotwidgets::col2hsl(dt[["hex"]]))
     )
   )
@@ -267,12 +267,12 @@ ranges_per_cluster <- function(cluster, dt, clust.var) {
   }
 
 #' @importFrom purrr map_dfr
-#' @importFrom tibble as.tibble
+#' @importFrom tibble as_tibble
 #'
 #' @noRd
 median_cut <- function(data, n) {
 
-  data <- tibble::as.tibble(data)
+  data <- tibble::as_tibble(data)
   data["cluster"] <- 1
 
   while (max(data["cluster"]) < n) {
@@ -332,7 +332,7 @@ most_frequent_hex_per_cluster <- function(hex, cluster) {
 
 }
 
-#' @importFrom tibble as.tibble
+#' @importFrom tibble as_tibble
 #' @importFrom magrittr "%>%"
 #' @importFrom dplyr group_by summarise arrange desc n
 #' @importFrom grDevices rgb
@@ -341,7 +341,7 @@ most_frequent_hex_per_cluster <- function(hex, cluster) {
 #' @noRd
 rgb_per_cluster <- function(rgb, cluster, method) {
 
-  rgb <- tibble::as.tibble(rgb)
+  rgb <- tibble::as_tibble(rgb)
   rgb["cluster"] <- cluster
   red = green = blue = NULL
 

@@ -5,7 +5,7 @@
 #'    \code{get_colors} function in the RGB color space.
 #'
 #' @importFrom purrr map2
-#' @importFrom tibble tibble as.tibble
+#' @importFrom tibble tibble as_tibble
 #' @importFrom dplyr bind_cols
 #' @importFrom grDevices col2rgb rgb2hsv
 #'
@@ -48,7 +48,7 @@ plot_colors_3d <- function(data, sample_size = 5000, marker_size = 2.5, color_sp
   # Convert back to RGB
   all <- dplyr::bind_cols(
     all,
-    tibble::as.tibble(t(grDevices::col2rgb(all[["hex"]])))
+    tibble::as_tibble(t(grDevices::col2rgb(all[["hex"]])))
   )
 
   # Check for correct color space
