@@ -13,6 +13,6 @@ RoxygenNote: 7.3.2
 Imports: purrr, stringr, pixmap, tibble, treemap, rsvg, png, jpeg,
         tiff, bmp, dplyr, plotly, magrittr, plotwidgets
 NeedsCompilation: no
-Packaged: 2025-04-29 07:37:44 UTC; DavidZumbach
+Packaged: 2026-02-11 10:16:18 UTC; DavidZumbach
 Author: David Zumbach [aut, cre]
 Maintainer: David Zumbach <david.zumbach@gfzb.ch>
